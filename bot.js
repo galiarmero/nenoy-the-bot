@@ -1,5 +1,6 @@
 const { Telegraf } = require('telegraf')
 const gatekeeper = require('./middlewares/gatekeeper')
+const mainController = require('./controllers')
 
 require('dotenv').config()
 
@@ -17,16 +18,10 @@ bot.start((ctx) => {
 })
 bot.help((ctx) => ctx.reply('Send me your puzzle results and I\'ll ship them into your website! 🚀'))
 
-bot.on('message', function (ctx, next) {
-    console.log(ctx)
-    ctx.telegram.sendMessage(ctx.message.chat.id,
-      "Howdy"
-    )
-})
+bot.on('message', mainController)
 
 bot.launch()
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'))
 process.once('SIGTERM', () => bot.stop('SIGTERM'))
-
