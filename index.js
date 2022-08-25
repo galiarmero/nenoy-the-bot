@@ -5,6 +5,8 @@ require('dotenv').config()
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
+bot.use(gatekeeper)
+
 bot.start((ctx) => {
     ctx.reply(
         `Hi, ${ctx.update.message.from.first_name}! I'm Nenoy 🐶, ` +
