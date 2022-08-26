@@ -1,12 +1,10 @@
-const { deduceMessageType } = require('./concierge')
+const { deduceMessageType, getHandler } = require('./concierge')
 
 const mainController = (ctx) => {
     console.log(ctx)
-    type = deduceMessageType(ctx)
-    
-    // TODO: Implement getting of handlers
-    // handler = getHandler(type)
-    ctx.reply(`That message was a '${type}'`)
+    const type = deduceMessageType(ctx)
+    handle = getHandler(type)
+    handle(ctx)
 }
 
 module.exports = mainController
