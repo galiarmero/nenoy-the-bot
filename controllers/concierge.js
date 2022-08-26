@@ -1,4 +1,4 @@
-const { DEDUCERS_BY_TYPE } = require('./type-mappings')
+const { DEDUCERS_BY_TYPE, HANDLERS_BY_TYPE } = require('./type-mappings')
 const { INDECIPHERABLE } = require('./message-types')
 
 const deduceMessageType = (ctx) =>
@@ -8,4 +8,7 @@ const deduceMessageType = (ctx) =>
     )
     ?? INDECIPHERABLE
 
+const getHandler = (type) => HANDLERS_BY_TYPE[type]
+
 module.exports.deduceMessageType = deduceMessageType
+module.exports.getHandler = getHandler

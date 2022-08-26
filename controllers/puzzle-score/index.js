@@ -11,4 +11,11 @@ const isPuzzleScore = (ctx) => {
     return false
 }
 
+const handlePuzzleScore = (ctx) => {
+    ctx.reply('Good job on this puzzle. Say no more 😉', {
+        reply_to_message_id: ctx.message.message_id
+    })
+}
+
+module.exports = handlePuzzleScore
 module.exports.isPuzzleScore = isPuzzleScore
