@@ -1,5 +1,5 @@
 const gatekeeper = (ctx, next) => {
-    const ALLOWED_USER_IDS = (process.env.ALLOWED_USER_IDS || "")
+    const ALLOWED_USER_IDS = (process.env.ALLOWED_USER_IDS ?? "")
                                 .split(',').map((i) => parseInt(i.trim()))
 
     console.log(ALLOWED_USER_IDS)
