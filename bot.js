@@ -14,10 +14,10 @@ bot.start((ctx) => {
         `Hi, ${ctx.update.message.from.first_name}! I'm Nenoy 🐶, ` +
         `your personal assistant. I'll be taught many tricks for you in the future.\n\n` +
         `For now, I'll take care of your puzzle scores. ` +
-        `Just send them to me and I'll ship it into your website! 🚀`
+        `Just send them to me and I'll ship it to your website! 🚀`
     )
 })
-bot.help((ctx) => ctx.reply('Send me your puzzle results and I\'ll ship them into your website! 🚀'))
+bot.help((ctx) => ctx.reply('Send me your puzzle results and I\'ll ship them to your website! 🚀'))
 
 bot.on('message', mainController)
 
