@@ -18,8 +18,8 @@ const handlePuzzleScore = async (ctx) => {
 
     let reply;
     try {
-        await addPuzzleScore({ text })
-        reply = `Good job on this puzzle. Say no more 😉`
+        await addPuzzleScore({ resultText: text })
+        reply = `Good job on this puzzle. I gotchu 😉✅`
     } catch (error) {
         reply = ERROR_MESSAGE[error.causeType]
         if (error.causeType == CAUSE.ErrorResponse) {
