@@ -6,7 +6,7 @@ const mainController = require('./controllers')
 
 module.exports = fastifyPlugin(async (app) => {
     const bot = new Telegraf(process.env.BOT_TOKEN)
-    
+
     bot.use(gatekeeper)
     bot.start((ctx) => {
         ctx.reply(
@@ -18,13 +18,13 @@ module.exports = fastifyPlugin(async (app) => {
     })
     bot.help((ctx) => ctx.reply('Send me your puzzle results and I\'ll ship them to your website! 🚀'))
     bot.on('message', mainController)
-    
+
     // Enable graceful stop
     process.once('SIGINT', () => bot.stop('SIGINT'))
     process.once('SIGTERM', () => bot.stop('SIGTERM'))
 
     app?.log.info(`Bot created`)
     app?.decorate('bot', bot)
-    
+
     return bot
 })
