@@ -9,6 +9,7 @@ const isPuzzleScore = (ctx) => {
     if (/^\#Worldle\s*\#\d+/.test(text)) return true
     if (/^Saltong\s*\d+/.test(text)) return true
     if (/^Saltong Mini\s*\d+/.test(text)) return true
+    if (/^\#waffle\d+\s*/.test(text)) return true
 
     return false
 }
