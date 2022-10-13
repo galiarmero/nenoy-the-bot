@@ -21,6 +21,7 @@ const responseErrorInterceptor = (error) => {
         // that falls out of the range of 2xx
         error.causeType = CAUSE.ErrorResponse
     } else if (error.request) {
+        console.log(error)
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
