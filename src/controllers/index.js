@@ -1,10 +1,10 @@
 const { deduceMessageType, getHandler } = require('./concierge')
 
-const mainController = (ctx) => {
+const mainController = async (ctx) => {
     console.log(ctx)
     const type = deduceMessageType(ctx)
     handle = getHandler(type)
-    handle(ctx)
+    await handle(ctx)
 }
 
 module.exports = mainController
