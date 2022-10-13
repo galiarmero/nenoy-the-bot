@@ -27,7 +27,7 @@ const handlePuzzleScore = async (ctx) => {
         }
     }
 
-    ctx.reply(reply, { reply_to_message_id: ctx.message.message_id })
+    await ctx.reply(reply, { reply_to_message_id: ctx.message.message_id })
 }
 
 module.exports = handlePuzzleScore
