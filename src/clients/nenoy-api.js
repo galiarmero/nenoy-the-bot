@@ -14,7 +14,7 @@ const nenoyApi = axios.create({
       username: process.env.NENOY_API_USER,
       password: process.env.NENOY_API_PASS,
     },
-    timeout: 1000,
+    timeout: process.env.NENOY_API_TIMEOUT,
 })
 nenoyApi.interceptors.request.use(requestInterceptor, requestErrorInterceptor)
 nenoyApi.interceptors.response.use(responseInterceptor, responseErrorInterceptor)
