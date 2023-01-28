@@ -7,10 +7,10 @@ const isPuzzleScore = (ctx) => {
     if (/^Wordle\s*\d+/.test(text)) return true
     if (/^Daily Quordle\s*\d+/.test(text)) return true
     if (/^\#Worldle\s*\#\d+/.test(text)) return true
-    if (/^Saltong\s*\d+/.test(text)) return true
-    if (/^Saltong Mini\s*\d+/.test(text)) return true
+    if (/^Saltong (:?Mini\s*)?\d+/.test(text)) return true
     if (/^\#waffle\d+\s*/.test(text)) return true
     if (/^https:\/\/www.nytimes.com\/badges\/games\/mini.html*/.test(text)) return true
+    if (/^Daily (:?Sequence\s*|Rescue\s*)?Octordle\s*\#\d+/) return true
 
     return false
 }
