@@ -10,7 +10,7 @@ const isPuzzleScore = (ctx) => {
     if (/^Saltong (:?Mini\s*)?\d+/.test(text)) return true
     if (/^\#waffle\d+\s*/.test(text)) return true
     if (/^https:\/\/www.nytimes.com\/badges\/games\/mini.html*/.test(text)) return true
-    if (/^Daily (:?Sequence\s*|Rescue\s*)?Octordle\s*\#\d+/) return true
+    if (/^Daily (:?Sequence\s*|Rescue\s*)?Octordle\s*\#\d+/.test(text)) return true
 
     return false
 }
