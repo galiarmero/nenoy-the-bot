@@ -1,4 +1,5 @@
 const axios = require('axios')
+const axiosRetry = require('axios-retry')
 
 const {
     requestInterceptor,
@@ -15,6 +16,14 @@ const nenoyApi = axios.create({
       password: process.env.NENOY_API_PASS,
     },
     timeout: process.env.NENOY_API_TIMEOUT,
+})
+axiosRetry(nenoyApi, {
+    retries: process.env.NENOY_API_RETRY_MAX,
+    retryDelay: () => process.env.NENOY_API_RETRY_DELAY,
+    onRetry: (retryCount, error, requestConfig) => {
+        console.log(`Attempting retry number ${retryCount} after error: ${error}`)
+        return;
+    },
 })
 nenoyApi.interceptors.request.use(requestInterceptor, requestErrorInterceptor)
 nenoyApi.interceptors.response.use(responseInterceptor, responseErrorInterceptor)
