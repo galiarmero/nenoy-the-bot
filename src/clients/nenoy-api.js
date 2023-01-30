@@ -17,7 +17,17 @@ const nenoyApi = axios.create({
 })
 axiosRetry(nenoyApi, {
     retries: process.env.NENOY_API_RETRY_MAX,
-    retryDelay: () => process.env.NENOY_API_RETRY_DELAY,
+    shouldResetTimeout: true,
+    retryDelay: () => {
+        const delay = process.env.NENOY_API_RETRY_DELAY
+        console.log(`Retry delay calculated: ${delay}`)
+        return process.env.NENOY_API_RETRY_DELAY
+    },
+    retryCondition: (error) => {
+        console.log(`Error code found: ${error.code}`)
+        return axiosRetry.isNetworkOrIdempotentRequestError(error)
+                || error.code === 'ECONNABORTED'
+    }
     onRetry: (retryCount, error, requestConfig) => {
         console.log(`Attempting retry number ${retryCount} after error: ${error}`)
         return;
