@@ -1,5 +1,6 @@
 const { addPuzzleScore } = require('../../clients/nenoy-api')
 const { CAUSE, ERROR_MESSAGE } = require('../../types/errors')
+const { identifyCauseType } = require('../../middlewares/interceptors')
 
 const isPuzzleScore = (ctx) => {
     const { text } = ctx.update.message
@@ -23,9 +24,11 @@ const handlePuzzleScore = async (ctx) => {
         await addPuzzleScore({ resultText: text })
         reply = `Good job on this puzzle. I gotchu 😉✅`
     } catch (error) {
-        reply = ERROR_MESSAGE[error.causeType]
-        if (error.causeType == CAUSE.ErrorResponse) {
-            reply += `: ${error.response.data.message}`
+        console.log(error)
+        causeType = identifyCauseType(error)
+        reply = ERROR_MESSAGE[causeType]
+        if (causeType == CAUSE.ErrorResponse) {
+            reply += `: ${e.response.data.message}`
         }
     }
 
