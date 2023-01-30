@@ -24,8 +24,9 @@ const handlePuzzleScore = async (ctx) => {
         await addPuzzleScore({ resultText: text })
         reply = `Good job on this puzzle. I gotchu 😉✅`
     } catch (error) {
-        console.log(error)
+        console.log(`Error encountered: ${error}`)
         causeType = identifyCauseType(error)
+        console.log(`Cause type: ${causeType}`)
         reply = ERROR_MESSAGE[causeType]
         if (causeType == CAUSE.ErrorResponse) {
             reply += `: ${e.response.data.message}`
