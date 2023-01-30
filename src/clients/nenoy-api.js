@@ -27,7 +27,7 @@ axiosRetry(nenoyApi, {
         console.log(`Error code found: ${error.code}`)
         return axiosRetry.isNetworkOrIdempotentRequestError(error)
                 || error.code === 'ECONNABORTED'
-    }
+    },
     onRetry: (retryCount, error, requestConfig) => {
         console.log(`Attempting retry number ${retryCount} after error: ${error}`)
         return;
