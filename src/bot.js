@@ -16,7 +16,7 @@ module.exports = fastifyPlugin(async (app) => {
             `Just send them to me and I'll ship it to your website! 🚀`
         )
     })
-    bot.help((ctx) => ctx.reply('Send me your puzzle results and I\'ll ship them to your website! 🚀'))
+    bot.help((ctx) => ctx.reply('Send me your puzzle results and I\'ll ship them to your website! 🚀' + `\n[Chat ID: ${ctx.chat.id}]`))
     bot.on('message', mainController)
 
     // Enable graceful stop
