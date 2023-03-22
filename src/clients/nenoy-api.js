@@ -20,8 +20,8 @@ axiosRetry(nenoyApi, {
     retryDelay: () => process.env.NENOY_API_RETRY_DELAY,
     shouldResetTimeout: true,
     retryCondition: (error) => {
-        console.log(`========== Error found: ${error}`)
-        console.log(`========== Error code found: ${error.code}`)
+        console.log(`[DEBUG] Error found: ${error}`)
+        console.log(`[DEBUG] Error code found: ${error.code}`)
         return axiosRetry.isNetworkOrIdempotentRequestError(error)
                 || error.code === 'ECONNABORTED'
     },
