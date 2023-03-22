@@ -13,4 +13,36 @@ module.exports = fastifyPlugin(async (app) => {
     // Meanwhile, when app runs as serverless function in Vercel, we use
     // `fastify.server.emit`. In this scenario, the `req.raw.body` is not empty
     app.post(webhookPath, (req, rep) => webhook(req.raw.body ? req.raw : req, rep.raw))
+
+
+    // Push notifs for website deploys
+    const NOTIFY_STATES = [ 'error', 'building', 'ready' ] // other possible states: `building`, `ready`
+    const NOTIF_CHAT_IDS = (process.env.NOTIF_CHAT_IDS ?? "")
+                                .split(',').map((i) => parseInt(i.trim()))
+
+    const formatMessage = {
+        'building': (link) => `🚀 Deploy for galiarmero\\.dev ongoing\\.`,
+        'error': (link) => `🚩 Deploy for galiarmero\\.dev failed\\. See [logs](${link})\\.`,
+        'ready': (link) => `✅ Deploy for galiarmero\\.dev succeeded\\.`,
+    }
+    app.post(`/events/website-deploys`, async (req, res) => {
+        console.log(req.body)
+        const { id, state, context, admin_url } = req.body
+
+        if (context !== 'production') return res.send()
+        if (!NOTIFY_STATES.includes(state)) return res.send()
+
+        const deployLink = `${admin_url}/deploys/${id}`
+        await Promise.all(NOTIF_CHAT_IDS.map(async (chatId) => {
+            await app.bot.telegram.sendMessage(
+                chatId,
+                formatMessage[state](deployLink),
+                {
+                    parse_mode: 'MarkdownV2',
+                    disable_web_page_preview: true,
+                }
+            )
+        }))
+        return res.send()
+    })
 })
