@@ -22,7 +22,7 @@ module.exports = fastifyPlugin(async (app) => {
 
     const formatMessage = {
         'building': (link) => `🚀 Deploy for galiarmero\\.dev ongoing\\.`,
-        'error': (link) => `🚩 Deploy for galiarmero\\.dev failed\\. See [logs](${link})\\.`,
+        'error': (link) => `🚩 Deploy for galiarmero\\.dev failed\\.\n\n\t• 🔎 View [logs](${link})\n\t• ▶️ /deploysite`,
         'ready': (link) => `✅ Deploy for galiarmero\\.dev succeeded\\.`,
     }
     app.post(`/events/website-deploys`, async (req, res) => {
