@@ -18,9 +18,6 @@ module.exports = fastifyPlugin(async (app) => {
         )
     })
     bot.help((ctx) => ctx.reply('Send me your puzzle results and I\'ll ship them to your website! 🚀' + `\n[Chat ID: ${ctx.chat.id}]`))
-    bot.command('deploysite', async () => {
-        await axios.post(process.env.BUILD_HOOK_SITE, {})
-    })
     bot.on('message', mainController)
 
     // Enable graceful stop
