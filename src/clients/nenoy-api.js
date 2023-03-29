@@ -37,12 +37,10 @@ const addPuzzleScore = async (newPuzzleScore) => {
 }
 
 const deployWebsite = async () => {
-    return nenoyApi.post('/deploys/website', null, {
-        params: {
-            force: true,
-            title: 'Deploy triggered via @NenoyTheBot'
-        }
-    });
+    return nenoyApi.post('/deploys/website',
+        { title: `Deploy triggered via @NenoyTheBot` },
+        { params: { force: true } }
+    );
 }
 
 module.exports.addPuzzleScore = addPuzzleScore
