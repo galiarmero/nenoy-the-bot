@@ -3,7 +3,7 @@ const { INDECIPHERABLE } = require('./message-types')
 
 const deduceMessageType = (ctx) =>
     Object.entries(DEDUCERS_BY_TYPE).reduce(
-        (deducedType, [type, isOfThisType]) => deducedType ?? isOfThisType(ctx) ? type : null,
+        (deducedType, [type, isOfThisType]) => deducedType ?? (isOfThisType(ctx) ? type : null),
         null
     )
     ?? INDECIPHERABLE
