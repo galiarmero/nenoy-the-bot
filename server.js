@@ -18,9 +18,12 @@ if (process.env.UPDATE_METHOD == 'polling') {
             url = await ngrok.connect(PORT)
         }
         a.decorate('url', url)
-    })).after(() => {
-        app.register(require('./src/bot')).after(() => {
-            app.register(require('./src/webhook'))
+    }))
+    .after(() => {
+        app.register(require('./src/config')).after(() => {
+            app.register(require('./src/bot')).after(() => {
+                app.register(require('./src/webhook'))
+            })
         })
     })
     

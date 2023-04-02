@@ -2,6 +2,7 @@ const Fastify = require('fastify')
 require('dotenv').config()
 
 const app = Fastify({ logger: true })
+app.register(require('../src/config'))
 app.register(require('../src/bot'))
 app.register(require('../src/webhook'))
 app.get('/',  (req, rep) => rep.send(
