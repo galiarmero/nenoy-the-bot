@@ -1,7 +1,7 @@
 const NOTIFY_STATES = [ 'error', 'building', 'ready' ] // other possible states: `building`, `ready`
 const formatMessage = {
     'building': () => `🚀 Deploy for galiarmero\\.dev ongoing\\.`,
-    'error': (link) => `🚩 Deploy for galiarmero\\.dev failed\\.\n\n\t• 🔎 View [logs](${link})\n\t• ▶️ /deploysite`,
+    'error': (link) => `🚩 Deploy for galiarmero\\.dev failed\\.\n\n  • 🔎 View [logs](${link})\n  • ▶️ /deploysite`,
     'ready': () => `✅ Deploy for galiarmero\\.dev succeeded\\.`,
 }
 
