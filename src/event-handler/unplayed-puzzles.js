@@ -3,7 +3,7 @@ const PUZZLES = require('../config/puzzles')
 const unplayedPuzzlesHandler = async (app, request, reply) => {
     const { unplayedPuzzles } = request.body
 
-    if (!Array.isArray(unplayedPuzzles) || unplayedPuzzles.length == 0) return reply.send()
+    if (!Array.isArray(unplayedPuzzles) || unplayedPuzzles.length == 0) return reply.code(400).send()
 
     let reminder = unplayedPuzzles.reduce((message, puzzleId) => {
         const puzzle = PUZZLES[puzzleId]
