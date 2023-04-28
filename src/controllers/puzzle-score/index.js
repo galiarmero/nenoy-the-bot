@@ -1,20 +1,13 @@
 const { addPuzzleScore } = require('../../clients/nenoy-api')
 const { CAUSE, ERROR_MESSAGE } = require('../../types/errors')
 const { identifyCauseType } = require('../../middlewares/interceptors')
+const PUZZLES = require('../../config/puzzles')
+
 
 const isPuzzleScore = (ctx) => {
     const { text } = ctx.update.message
 
-    if (/^Wordle\s*\d+/.test(text)) return true
-    if (/^Daily Quordle\s*\d+/.test(text)) return true
-    if (/^\#Worldle\s*\#\d+/.test(text)) return true
-    if (/^Saltong (:?Mini\s*)?\d+/.test(text)) return true
-    if (/^\#waffle\d+\s*/.test(text)) return true
-    if (/^https:\/\/www.nytimes.com\/badges\/games\/mini.html*/.test(text)) return true
-    if (/^Daily (:?Sequence\s*|Rescue\s*)?Octordle\s*\#\d+/.test(text)) return true
-    if (/^\#WhereTaken\s*📷\s*\#\d+/.test(text)) return true
-
-    return false
+    return Object.values(PUZZLES).some(p => p.resultPattern.test(text))
 }
 
 const handlePuzzleScore = async (ctx) => {
