@@ -23,7 +23,7 @@ const handlePuzzleScore = async (ctx) => {
         console.log(`Cause type: ${causeType}`)
         reply = ERROR_MESSAGE[causeType]
         if (causeType == CAUSE.ErrorResponse) {
-            reply += `: ${e.response.data.message}`
+            reply += `: ${((error.response) ? error.response?.data?.message : error)}`
         }
     }
 
