@@ -13,11 +13,11 @@ const nenoyApi = axios.create({
       username: process.env.NENOY_API_USER,
       password: process.env.NENOY_API_PASS,
     },
-    timeout: process.env.NENOY_API_TIMEOUT,
+    timeout: process.env.NENOY_API_TIMEOUT ?? 5000,
 })
 axiosRetry(nenoyApi, {
-    retries: process.env.NENOY_API_RETRY_MAX,
-    retryDelay: () => process.env.NENOY_API_RETRY_DELAY,
+    retries: process.env.NENOY_API_RETRY_MAX ?? 5,
+    retryDelay: () => process.env.NENOY_API_RETRY_DELAY ?? 10000,
     shouldResetTimeout: true,
     retryCondition: (error) => {
         console.log(`[DEBUG] Error found: ${error}`)
