@@ -69,6 +69,6 @@ module.exports = {
     displayName: "Connections",
     emoji: '🟪',
     link: 'https://www.nytimes.com/games/connections',
-    resultPattern: /^Connections\s*+/,
+    resultPattern: /^Connections\s*/,
   },
 }
