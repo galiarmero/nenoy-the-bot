@@ -20,6 +20,7 @@ Personal assistant Telegram bot. Currently ships my daily puzzle scores to [gali
 | `WEBHOOK_BASE_URL`      | _Required when `UPDATE_METHOD` is not `polling`._ <br><br> URL of the webhook server where Telegram bot updates will be sent._ | e.g. `http://localhost:3000`                       |
 | `UPDATE_METHOD`         | How updates from Telegram will be received by the bot.                                                                         | `polling` or `webhook` <br><br> Default: `webhook` |
 | `NODE_ENV`              | Current deployment environment. Mainly used to decide how webhook server will be set up.                                       | `development` or `production`                      |
+| `PORT`                  | Port where the server will run                                                                                                 | e.g. `3000`                                        |
 
 ### Starting the bot
 
