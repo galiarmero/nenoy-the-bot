@@ -65,4 +65,10 @@ module.exports = {
     link: 'https://wheretaken.teuteuf.fr/',
     resultPattern: /^📷 \#WhereTaken🌎\s*\#\d+/,
   },
+  connections: {
+    displayName: "Connections",
+    emoji: '🟪',
+    link: 'https://www.nytimes.com/games/connections',
+    resultPattern: /^Connections\s*+/,
+  },
 }
