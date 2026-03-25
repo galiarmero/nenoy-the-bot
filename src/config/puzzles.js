@@ -71,4 +71,10 @@ module.exports = {
     link: 'https://www.nytimes.com/games/connections',
     resultPattern: /^Connections\s*/,
   },
+  "minute-cryptic": {
+    displayName: "Minute Cryptic",
+    emoji: '🟣',
+    link: 'https://www.minutecryptic.com/',
+    resultPattern: /^Minute Cryptic\s*-\s*/,
+  },
 }
