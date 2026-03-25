@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/galiarmero/nenoy-the-bot/issues"
   },
-  "homepage": "https://github.com/galiarmero/nenoy-the-bot#readme"
+  "homepage": "https://github.com/galiarmero/nenoy-the-bot#readme",
+  "engines": {
+    "node": "22.x"
+  }
 }
