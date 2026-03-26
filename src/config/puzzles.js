@@ -9,7 +9,7 @@ module.exports = {
     displayName: "Quordle",
     emoji: '🔢',
     link: 'https://www.merriam-webster.com/games/quordle/#/',
-    resultPattern: /^Daily Quordle\s*\d+/,
+    resultPattern: /^.*?Daily Quordle\s*\d+/,
   },
   worldle: {
     displayName: "Worldle",
