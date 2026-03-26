@@ -11,6 +11,24 @@ module.exports = {
     link: 'https://www.merriam-webster.com/games/quordle/#/',
     resultPattern: /^.*?Daily Quordle\s*\d+/,
   },
+  "quordle-sequence": {
+    displayName: "Sequence Quordle",
+    emoji: '🔢',
+    link: 'https://www.merriam-webster.com/games/quordle/',
+    resultPattern: /^Daily Sequence Quordle\s*\d+/,
+  },
+  "quordle-extreme": {
+    displayName: "Extreme Quordle",
+    emoji: '🔢',
+    link: 'https://www.merriam-webster.com/games/quordle/',
+    resultPattern: /^.*?Daily Extreme\s*\d+/,
+  },
+  "quordle-rescue": {
+    displayName: "Rescue Quordle",
+    emoji: '🔢',
+    link: 'https://www.merriam-webster.com/games/quordle/',
+    resultPattern: /^Daily Rescue\s*\d+/,
+  },
   worldle: {
     displayName: "Worldle",
     emoji: '🌍',
