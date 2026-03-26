@@ -9,7 +9,25 @@ module.exports = {
     displayName: "Quordle",
     emoji: '🔢',
     link: 'https://www.merriam-webster.com/games/quordle/#/',
-    resultPattern: /^Daily Quordle\s*\d+/,
+    resultPattern: /^.*?Daily Quordle\s*\d+/,
+  },
+  "quordle-sequence": {
+    displayName: "Sequence Quordle",
+    emoji: '🔢',
+    link: 'https://www.merriam-webster.com/games/quordle/',
+    resultPattern: /^Daily Sequence Quordle\s*\d+/,
+  },
+  "quordle-extreme": {
+    displayName: "Extreme Quordle",
+    emoji: '🔢',
+    link: 'https://www.merriam-webster.com/games/quordle/',
+    resultPattern: /^.*?Daily Extreme\s*\d+/,
+  },
+  "quordle-rescue": {
+    displayName: "Rescue Quordle",
+    emoji: '🔢',
+    link: 'https://www.merriam-webster.com/games/quordle/',
+    resultPattern: /^Daily Rescue\s*\d+/,
   },
   worldle: {
     displayName: "Worldle",
@@ -76,5 +94,23 @@ module.exports = {
     emoji: '🟣',
     link: 'https://www.minutecryptic.com/',
     resultPattern: /^Minute Cryptic\s*-\s*/,
+  },
+  maptap: {
+    displayName: "MapTap",
+    emoji: '🌍',
+    link: 'https://www.maptap.gg/',
+    resultPattern: /^www\.maptap\.gg\s*/,
+  },
+  strands: {
+    displayName: "Strands",
+    emoji: '🔵',
+    link: 'https://www.nytimes.com/games/strands',
+    resultPattern: /^Strands\s*\#\d+/,
+  },
+  "clues-by-sam": {
+    displayName: "Clues by Sam",
+    emoji: '👮',
+    link: 'https://cluesbysam.com',
+    resultPattern: /^.*?\#CluesBySam/,
   },
 }
