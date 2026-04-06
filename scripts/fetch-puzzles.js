@@ -1,24 +1,47 @@
 require('dotenv').config()
 const axios = require('axios')
+const axiosRetry = require('axios-retry')
 const fs = require('fs')
 const path = require('path')
 
 const OUT_PATH = path.join(__dirname, '..', 'src', 'config', 'puzzles.generated.json')
 
 async function main() {
-  const { NENOY_API_BASE_URL, NENOY_API_USER, NENOY_API_PASS } = process.env
+  const {
+    NENOY_API_BASE_URL,
+    NENOY_API_USER,
+    NENOY_API_PASS,
+    NENOY_API_TIMEOUT,
+    NENOY_API_RETRY_MAX,
+    NENOY_API_RETRY_DELAY,
+  } = process.env
 
   if (!NENOY_API_BASE_URL || !NENOY_API_USER || !NENOY_API_PASS) {
     throw new Error('Missing required env vars: NENOY_API_BASE_URL, NENOY_API_USER, NENOY_API_PASS')
   }
 
-  console.log(`Fetching puzzles from ${NENOY_API_BASE_URL}/puzzles ...`)
+  const retries = NENOY_API_RETRY_MAX ?? 5
+  const retryDelay = NENOY_API_RETRY_DELAY ?? 10000
 
-  const res = await axios.get('/puzzles', {
+  const client = axios.create({
     baseURL: NENOY_API_BASE_URL,
     auth: { username: NENOY_API_USER, password: NENOY_API_PASS },
-    timeout: 10000,
+    timeout: NENOY_API_TIMEOUT ?? 5000,
   })
+  axiosRetry(client, {
+    retries,
+    retryDelay: () => retryDelay,
+    shouldResetTimeout: true,
+    retryCondition: (error) =>
+      axiosRetry.isNetworkOrIdempotentRequestError(error) || error.code === 'ECONNABORTED',
+    onRetry: (retryCount, error) => {
+      console.log(`Retry ${retryCount}/${retries} after: ${error.message}`)
+    },
+  })
+
+  console.log(`Fetching puzzles from ${NENOY_API_BASE_URL}/puzzles ...`)
+
+  const res = await client.get('/puzzles')
 
   const { puzzles } = res.data
   if (!Array.isArray(puzzles) || puzzles.length === 0) {
