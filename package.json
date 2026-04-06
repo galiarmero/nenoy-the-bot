@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/bot.js",
     "fetch-puzzles": "node scripts/fetch-puzzles.js",
-    "build": "npm run fetch-puzzles && mkdir -p public",
+    "build": "npm run fetch-puzzles",
     "dev": "npm run dev:webhook",
     "predev:webhook": "npm run fetch-puzzles",
     "dev:webhook": "DEBUG='telegraf:*' nodemon server.js",
