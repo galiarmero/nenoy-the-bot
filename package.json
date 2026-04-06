@@ -5,8 +5,12 @@
   "main": "src/bot.js",
   "scripts": {
     "start": "node src/bot.js",
+    "fetch-puzzles": "node scripts/fetch-puzzles.js",
+    "build": "npm run fetch-puzzles",
     "dev": "npm run dev:webhook",
+    "predev:webhook": "npm run fetch-puzzles",
     "dev:webhook": "DEBUG='telegraf:*' nodemon server.js",
+    "predev:polling": "npm run fetch-puzzles",
     "dev:polling": "DEBUG='telegraf:*' UPDATE_METHOD='polling' nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,4 +1,8 @@
 {
+    "framework": null,
+    "installCommand": "npm install",
+    "buildCommand": "npm run fetch-puzzles",
+    "outputDirectory": ".",
     "rewrites": [
         {
             "source": "/(.*)",

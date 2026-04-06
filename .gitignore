@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Build-time generated puzzle config
+src/config/puzzles.generated.json
