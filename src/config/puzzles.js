@@ -1,4 +1,10 @@
-const puzzlesArray = require('./puzzles.generated.json')
+let puzzlesArray
+try {
+  puzzlesArray = require('./puzzles.generated.json')
+} catch (err) {
+  console.error(`[puzzles] Failed to load puzzles.generated.json: ${err.message}`)
+  puzzlesArray = []
+}
 
 const puzzles = {}
 for (const p of puzzlesArray) {
