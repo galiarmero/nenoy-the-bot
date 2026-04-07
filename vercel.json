@@ -1,8 +1,8 @@
 {
     "framework": null,
     "installCommand": "npm install",
-    "buildCommand": "npm run fetch-puzzles",
-    "outputDirectory": ".",
+    "buildCommand": "npm run fetch-puzzles && mkdir -p public && touch public/.keep",
+    "outputDirectory": "public",
     "rewrites": [
         {
             "source": "/(.*)",

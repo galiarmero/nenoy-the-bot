@@ -11,6 +11,4 @@ for (const p of puzzlesArray) {
   }
 }
 
-console.log(`[puzzles] Loaded ${puzzlesArray.length} puzzles: ${Object.keys(puzzles).join(', ')}`)
-
 module.exports = puzzles
