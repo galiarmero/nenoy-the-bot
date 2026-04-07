@@ -1,4 +1,4 @@
-const PUZZLES = require('../config/puzzles')
+const PUZZLES = require('../../config/puzzles')
 
 const handleIndecipherable = async (ctx) => {
     const puzzleNames = Object.keys(PUZZLES)
